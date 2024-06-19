@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Shop.Models.Product>
+
+<h2>Search Results</h2>
+
+<ul>
+    @foreach (var product in Model)
+    {
+        <li>@product.Name - @product.Price</li>
+    }
+</ul>
+
+<a href="@Url.Action("Index")">Back to List</a>
