@@ -33,10 +33,14 @@ namespace Shop
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.AddTransient<ISmartPhraseGenerator, SmartPhraseGenerator>();
             services.AddSingleton<ILoggingService, LoggingService>();
             services.AddScoped<ExceptionLoggingFilter>();
             services.AddScoped<SearchLoggingFilter>();
+
+            services.AddSingleton<IDayOfWeekService, DayOfWeekService>();
+            services.AddSingleton<IMonthService, MonthService>();
+
             services
                 .AddMvc(options =>
                 {
